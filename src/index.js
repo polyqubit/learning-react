@@ -2,11 +2,26 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './style.css';
 
-class Main extends React.Component {
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.status = {
+      count: 0,
+    };
+  }
+
+  onMount() {
+
+  }
+
+  onUnmount() {
+
+  }
+  
   render() {
     return (
-      <div className="game">
-        
+      <div>
+        <h1>Amount of seconds since page load: {this.status.count}</h1>
       </div>
     );
   }
@@ -15,4 +30,4 @@ class Main extends React.Component {
 // ========================================
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Main />);
+root.render(<Counter />);
