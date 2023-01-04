@@ -36,7 +36,22 @@ class Counter extends React.Component {
   }
 }
 
+// change to component later to allow for enabling/disabling counter
+function Activator() {
+  function handleClick() {
+    console.log("activate");
+  }
+  return (
+    <button class="w" onclick={handleClick}>Activate second counter</button>
+  );
+}
+
 // ========================================
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Counter />);
+root.render(
+  <div>
+    <Counter />
+    <Activator />
+  </div>
+);
