@@ -54,5 +54,33 @@ ol, ul {
 }
 
 .w {
-  background: aquamarine;
+  background: white;
+  color: black;
+  padding: 16px 32px;
+  border: 2px solid #4CAF50;
+  font-size: large;
+  border-radius: 1pc;
+  width: 300px;
+  transition-duration: 0.2s
+}
+
+.w:hover {
+  background: #4CAF50;
+  color: white;
+}
+
+.w--transition {
+  background: white;
+  color: black;
+  padding: 16px 32px;
+  border: 2px solid #cf1f1f;
+  font-size: large;
+  border-radius: 1pc;
+  width: 300px;
+  transition-duration: 0.2s
+}
+
+.w--transition:hover {
+  background: #cf1f1f;
+  color: white;
 }

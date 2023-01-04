@@ -36,14 +36,28 @@ class Counter extends React.Component {
   }
 }
 
-// change to component later to allow for enabling/disabling counter
-function Activator() {
-  function handleClick() {
-    console.log("activate");
+class Activator extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: false,
+    }
   }
-  return (
-    <button className="w" onClick={handleClick}>Activate second counter</button>
-  );
+  handleClick() {
+    this.setState({
+      active: !this.state.active,
+    })
+  }
+  // create child Counter of Activator
+  // lift counting state up so that Counter -> Display(?)
+  render() {
+    return (
+      <div>
+        <button className={`${this.state.active ?  "w--transition" : "w"}`} onClick={()=>this.handleClick()}>{`${this.state.active ? "Deactivate" : "Activate"}`} second counter</button>
+        
+      </div>
+    );
+  }
 }
 
 // ========================================
