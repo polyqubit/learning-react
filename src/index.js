@@ -5,23 +5,32 @@ import './style.css';
 class Counter extends React.Component {
   constructor(props) {
     super(props);
-    this.status = {
+    this.state = {
       count: 0,
     };
   }
 
-  onMount() {
-
+  componentDidMount() {
+    this.increment = setInterval(
+      () => this.tick(),
+      1000
+    );
   }
 
-  onUnmount() {
+  componentWillUnmount() {
+    clearInterval(this.increment);
+  }
 
+  tick() {
+    this.setState({
+      count: this.state.count + 1,
+    })
   }
   
   render() {
     return (
       <div>
-        <h1>Amount of seconds since page load: {this.status.count}</h1>
+        <h1>Amount of seconds since page load: {this.state.count}</h1>
       </div>
     );
   }
