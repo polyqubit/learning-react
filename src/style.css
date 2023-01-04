@@ -84,3 +84,8 @@ ol, ul {
   background: #cf1f1f;
   color: white;
 }
+
+.mini {
+  float: left;
+  margin-right: 1%;
+}

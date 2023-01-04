@@ -30,7 +30,7 @@ class Counter extends React.Component {
   render() {
     return (
       <div>
-        <h1>Amount of seconds since page load: {this.state.count}</h1>
+        <h1>{this.props.text} {this.state.count}</h1>
       </div>
     );
   }
@@ -53,10 +53,20 @@ class Activator extends React.Component {
   render() {
     return (
       <div>
-        <button className={`${this.state.active ?  "w--transition" : "w"}`} onClick={()=>this.handleClick()}>{`${this.state.active ? "Deactivate" : "Activate"}`} second counter</button>
-        
+        <button className={`mini ${this.state.active ?  "w--transition" : "w"}`} onClick={()=>this.handleClick()}>{`${this.state.active ? "Deactivate" : "Activate"}`} second counter</button>
       </div>
     );
+  }
+}
+
+class Display extends React.Component {
+  render() {
+    return (
+      <div>
+        <Activator />
+        <Counter text="Togglable counter:"/>
+      </div>
+    )
   }
 }
 
@@ -65,7 +75,7 @@ class Activator extends React.Component {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <div>
-    <Counter />
-    <Activator />
+    <Counter text="Amount of seconds since page load:"/>
+    <Display />
   </div>
 );
