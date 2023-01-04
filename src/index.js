@@ -42,7 +42,7 @@ function Activator() {
     console.log("activate");
   }
   return (
-    <button class="w" onclick={handleClick}>Activate second counter</button>
+    <button className="w" onClick={handleClick}>Activate second counter</button>
   );
 }
 
