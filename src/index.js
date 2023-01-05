@@ -13,7 +13,7 @@ class Counter extends React.Component {
   componentDidMount() {
     this.increment = setInterval(
       () => this.tick(),
-      1000
+      this.props.ticks
     );
   }
 
@@ -58,7 +58,7 @@ class Display extends React.Component {
     return (
       <div>
         <Activator active={this.state.run} onClick={this.handleClick}/>
-        <Counter active={this.state.run} run={this.state.run} text="Togglable counter:"/>
+        <Counter active={this.state.run} run={this.state.run} ticks={10} text="Togglable counter:"/>
       </div>
     );
   }
@@ -69,7 +69,7 @@ class Display extends React.Component {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <div>
-    <Counter run={true} text="Amount of seconds since page load:"/>
+    <Counter run={true} ticks={1000} text="Amount of seconds since page load:"/>
     <Display />
   </div>
 );
