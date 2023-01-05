@@ -22,9 +22,11 @@ class Counter extends React.Component {
   }
 
   tick() {
-    this.setState({
-      count: this.state.count + 1,
-    })
+    if(this.props.run){
+      this.setState({
+          count: this.state.count + 1,
+      })
+    }
   }
   
   render() {
@@ -36,37 +38,29 @@ class Counter extends React.Component {
   }
 }
 
-class Activator extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      active: false,
-    }
-  }
-  handleClick() {
-    this.setState({
-      active: !this.state.active,
-    })
-  }
-  // create child Counter of Activator
-  // lift counting state up so that Counter -> Display(?)
-  render() {
-    return (
-      <div>
-        <button className={`mini ${this.state.active ?  "w--transition" : "w"}`} onClick={()=>this.handleClick()}>{`${this.state.active ? "Deactivate" : "Activate"}`} second counter</button>
-      </div>
-    );
-  }
+function Activator(props) {
+  return (
+    <div>
+        <button className={`mini ${props.active ?  "w--transition" : "w"}`} onClick={props.onClick}>{`${props.active ? "Deactivate" : "Activate"}`} second counter</button>
+    </div>
+  )
 }
 
 class Display extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      run: false,
+    };
+  }
+  handleClick = () => this.setState({run: !this.state.run});
   render() {
     return (
       <div>
-        <Activator />
-        <Counter text="Togglable counter:"/>
+        <Activator onClick={this.handleClick}/>
+        <Counter active={this.state.run} run={this.state.run} text="Togglable counter:"/>
       </div>
-    )
+    );
   }
 }
 
@@ -75,7 +69,7 @@ class Display extends React.Component {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <div>
-    <Counter text="Amount of seconds since page load:"/>
+    <Counter run={true} text="Amount of seconds since page load:"/>
     <Display />
   </div>
 );
