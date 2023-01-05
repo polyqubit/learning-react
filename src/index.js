@@ -57,7 +57,7 @@ class Display extends React.Component {
   render() {
     return (
       <div>
-        <Activator onClick={this.handleClick}/>
+        <Activator active={this.state.run} onClick={this.handleClick}/>
         <Counter active={this.state.run} run={this.state.run} text="Togglable counter:"/>
       </div>
     );
